@@ -1,0 +1,5 @@
+FROM BASE_REGISTRY_URI/DAKOTA_LOGGER_IMAGE:LOGGER_TAG
+
+ADD ekk /usr/local/bin
+
+CMD ["ekk"]

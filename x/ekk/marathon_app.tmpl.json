@@ -1,0 +1,20 @@
+{
+  "mem": 2048,
+  "constraints": [
+    [
+      "hostname",
+      "UNIQUE"
+    ]
+  ],
+  "container": {
+    "type": "DOCKER",
+    "docker": {
+      "forcePullImage": true
+    }
+  },
+  "env": {
+    "KAFKA_BROKERS_HOST_PORT": "@LOGGER_KAFKA_BROKERS_HOST_PORT@",
+    "ZOOKEEPER_HOST_PORT": "@LOGGER_ZOOKEEPER_HOST_PORT@",
+    "ELASTICSEARCH_URLS": "@ELASTICSEARCH_URLS@"
+  }
+}

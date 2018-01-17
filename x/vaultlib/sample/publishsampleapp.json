@@ -1,0 +1,19 @@
+{
+	"info": [{
+		"dc": "iwk",
+		"app_id": "dakota/dev11/sampleapp",
+		"req_secrets": [{
+			"svc": "dummyKeySvc",
+			"secret_type": ["keys"]
+		},{
+			"svc": "dummyCertsSvc",
+			"secret_type": ["certs"]
+		},{
+			"svc": "dummyCredsSvc",
+			"secret_type": ["creds"]
+		},{
+			"svc": "dummyOtherSvc",
+			"secret_type": ["ip"]
+		}]
+	}]
+}
