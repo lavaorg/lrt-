@@ -18,7 +18,7 @@ package topics
 
 import (
 	"fmt"
-	"github.com/verizonlabs/northstar/pkg/rte/repl"
+	"github.com/lavaorg/lrt/x/rte/repl"
 )
 
 func GetCtrlTopicByType(rteType string) (string, error) {

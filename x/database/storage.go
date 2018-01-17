@@ -17,8 +17,8 @@ limitations under the License.
 package database
 
 import (
-	"github.com/verizonlabs/northstar/pkg/management"
-	"github.com/verizonlabs/northstar/pkg/mlog"
+	"github.com/lavaorg/lrt/x/management"
+	"github.com/lavaorg/lrt/x/mlog"
 	"encoding/json"
 	_ "github.com/gocql/gocql"
 	"net/http"

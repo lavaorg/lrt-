@@ -23,11 +23,11 @@ import (
 	"time"
 
 	"github.com/Shopify/sarama"
-	"github.com/verizonlabs/northstar/pkg/crypto"
-	"github.com/verizonlabs/northstar/pkg/mlog"
-	"github.com/verizonlabs/northstar/pkg/zklib"
-	"github.com/verizonlabs/northstar/pkg/zklib/config"
-	"github.com/verizonlabs/northstar/pkg/vaultlib"
+	"github.com/lavaorg/lrt/x/crypto"
+	"github.com/lavaorg/lrt/x/mlog"
+	"github.com/lavaorg/lrt/x/vaultlib"
+	"github.com/lavaorg/lrt/x/zklib"
+	"github.com/lavaorg/lrt/x/zklib/config"
 )
 
 func (cons *Consumer) Receive() chan *ConsumerEvent {

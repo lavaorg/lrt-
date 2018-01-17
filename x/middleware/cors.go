@@ -18,8 +18,8 @@ package middleware
 
 import (
 	"github.com/gin-gonic/gin"
+	"github.com/lavaorg/lrt/x/mlog"
 	"net/http"
-	"github.com/verizonlabs/northstar/pkg/mlog"
 	"strconv"
 	"strings"
 	"time"

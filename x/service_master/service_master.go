@@ -17,8 +17,8 @@ limitations under the License.
 package service_master
 
 import (
-	"github.com/verizonlabs/northstar/pkg/mlog"
 	"fmt"
+	"github.com/lavaorg/lrt/x/mlog"
 	"runtime"
 	"sync"
 	"sync/atomic"

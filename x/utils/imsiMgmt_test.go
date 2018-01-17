@@ -22,7 +22,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/verizonlabs/northstar/pkg/mlog"
+	"github.com/lavaorg/lrt/x/mlog"
 )
 
 func TestImsiGen(t *testing.T) {

@@ -20,13 +20,13 @@ import (
 	"encoding/json"
 
 	"errors"
-	"github.com/verizonlabs/northstar/pkg/mlog"
-	"github.com/verizonlabs/northstar/pkg/msgq"
-	"github.com/verizonlabs/northstar/data/invocations/client"
-	"github.com/verizonlabs/northstar/data/invocations/model"
-	"github.com/verizonlabs/northstar/pkg/rte/config"
-	"github.com/verizonlabs/northstar/pkg/rte/repl"
-	"github.com/verizonlabs/northstar/pkg/rte/stats"
+	"github.com/lavaorg/lrt/x/mlog"
+	"github.com/lavaorg/lrt/x/msgq"
+	"github.com/lavaorg/lrt/x/rte/config"
+	"github.com/lavaorg/lrt/x/rte/repl"
+	"github.com/lavaorg/lrt/x/rte/stats"
+	"github.com/lavaorg/northstar/data/invocations/client"
+	"github.com/lavaorg/northstar/data/invocations/model"
 )
 
 type SnippetManager interface {

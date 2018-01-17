@@ -16,7 +16,7 @@ limitations under the License.
 
 package stats
 
-import "github.com/verizonlabs/northstar/pkg/stats"
+import "github.com/lavaorg/lrt/x/stats"
 
 var (
 	RTE                    = stats.New("rte")

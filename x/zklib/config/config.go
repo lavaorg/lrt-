@@ -17,7 +17,7 @@ limitations under the License.
 package config
 
 import (
-	"github.com/verizonlabs/northstar/pkg/config"
+	"github.com/lavaorg/lrt/x/config"
 	"time"
 )
 
@@ -30,5 +30,5 @@ var (
 
 const (
 	SubscribeChanBufferedItems int = 100
-	DefaultZkConnectionTimeout = 6 * time.Second
+	DefaultZkConnectionTimeout     = 6 * time.Second
 )

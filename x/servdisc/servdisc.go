@@ -22,7 +22,7 @@ import (
 	"strings"
 	"syscall"
 
-	"github.com/verizonlabs/northstar/pkg/mlog"
+	"github.com/lavaorg/lrt/x/mlog"
 )
 
 type ServiceType int
@@ -86,7 +86,6 @@ const (
 	LRSERVER_SERVICE
 	SMSCONTROL_SERVICE
 )
-
 
 var ServiceNameMap = map[ServiceType]string{
 	UT_SERVICE:          "Utag",

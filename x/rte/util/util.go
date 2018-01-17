@@ -18,13 +18,13 @@ package util
 
 import (
 	"errors"
+	"github.com/lavaorg/lrt/x/b64"
+	"github.com/lavaorg/lrt/x/file"
+	"github.com/lavaorg/lrt/x/mlog"
 	"github.com/satori/go.uuid"
 	"net/url"
 	"os"
 	"os/exec"
-	"github.com/verizonlabs/northstar/pkg/mlog"
-	"github.com/verizonlabs/northstar/pkg/b64"
-	"github.com/verizonlabs/northstar/pkg/file"
 )
 
 const (

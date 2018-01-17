@@ -17,7 +17,7 @@ limitations under the License.
 package rlimit
 
 import (
-	"github.com/verizonlabs/northstar/pkg/stats"
+	"github.com/lavaorg/lrt/x/stats"
 )
 
 var (

@@ -16,7 +16,7 @@ limitations under the License.
 
 package config
 
-import "github.com/verizonlabs/northstar/pkg/config"
+import "github.com/lavaorg/lrt/x/config"
 
 // Logging Topics
 const (

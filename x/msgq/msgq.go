@@ -30,11 +30,11 @@ import (
 
 	"github.com/Shopify/sarama"
 	"github.com/samuel/go-zookeeper/zk"
-	"github.com/verizonlabs/northstar/pkg/mlog"
-	"github.com/verizonlabs/northstar/pkg/msgq/config"
-	"github.com/verizonlabs/northstar/pkg/servdisc"
-	"github.com/verizonlabs/northstar/pkg/stats"
-	"github.com/verizonlabs/northstar/pkg/zklib"
+	"github.com/lavaorg/lrt/x/mlog"
+	"github.com/lavaorg/lrt/x/msgq/config"
+	"github.com/lavaorg/lrt/x/servdisc"
+	"github.com/lavaorg/lrt/x/stats"
+	"github.com/lavaorg/lrt/x/zklib"
 )
 
 type PartitionerType int

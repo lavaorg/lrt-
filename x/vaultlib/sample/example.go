@@ -17,8 +17,8 @@ limitations under the License.
 package main
 
 import (
-	"github.com/verizonlabs/northstar/pkg/mlog"
-	vaultlib "github.com/verizonlabs/northstar/pkg/vaultlib"
+	"github.com/lavaorg/lrt/x/mlog"
+	vaultlib "github.com/lavaorg/lrt/x/vaultlib"
 )
 
 func main() {

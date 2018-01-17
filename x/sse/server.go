@@ -19,9 +19,9 @@ package sse
 import (
 	"errors"
 	"fmt"
+	"github.com/lavaorg/lrt/x/mlog"
 	"net/http"
 	"regexp"
-	"github.com/verizonlabs/northstar/pkg/mlog"
 	"strings"
 )
 

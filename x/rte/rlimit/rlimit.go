@@ -18,10 +18,10 @@ package rlimit
 
 import (
 	"fmt"
+	"github.com/lavaorg/lrt/x/mlog"
+	"github.com/lavaorg/lrt/x/rte/config"
 	"io/ioutil"
 	"runtime"
-	"github.com/verizonlabs/northstar/pkg/mlog"
-	"github.com/verizonlabs/northstar/pkg/rte/config"
 	"strconv"
 	"strings"
 	"time"

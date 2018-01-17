@@ -17,7 +17,7 @@ limitations under the License.
 package mocks
 
 import (
-	"github.com/verizonlabs/northstar/pkg/rte/events"
+	"github.com/lavaorg/lrt/x/rte/events"
 )
 
 type MockSnippetManagerStore struct{}

@@ -18,11 +18,11 @@ package zklib
 
 import (
 	"fmt"
+	"github.com/lavaorg/lrt/x/mlog"
+	"github.com/lavaorg/lrt/x/zklib/config"
 	"github.com/samuel/go-zookeeper/zk"
 	"path"
 	"reflect"
-	"github.com/verizonlabs/northstar/pkg/mlog"
-	"github.com/verizonlabs/northstar/pkg/zklib/config"
 	"sync"
 	"time"
 )

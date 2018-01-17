@@ -17,8 +17,8 @@ limitations under the License.
 package msgq
 
 import (
-	"github.com/verizonlabs/northstar/pkg/mlog"
-	"github.com/verizonlabs/northstar/pkg/msgq"
+	"github.com/lavaorg/lrt/x/mlog"
+	"github.com/lavaorg/lrt/x/msgq"
 )
 
 type MockMessageQueue struct{}

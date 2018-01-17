@@ -19,11 +19,10 @@ package middleware
 import (
 	"errors"
 	"github.com/gin-gonic/gin"
+	"github.com/lavaorg/lrt/x/accounts"
+	"github.com/lavaorg/lrt/x/management"
+	"github.com/lavaorg/lrt/x/mlog"
 	"net/http"
-	"github.com/verizonlabs/northstar/pkg/management"
-	"github.com/verizonlabs/northstar/pkg/thingspace"
-	. "github.com/verizonlabs/northstar/pkg/thingspace/api"
-	"github.com/verizonlabs/northstar/pkg/mlog"
 	"strings"
 )
 

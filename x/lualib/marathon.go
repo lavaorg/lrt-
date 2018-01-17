@@ -21,8 +21,8 @@ import (
 	"fmt"
 
 	marathon "github.com/gambol99/go-marathon"
+	"github.com/lavaorg/lrt/x/mlog"
 	"github.com/yuin/gopher-lua"
-	"github.com/verizonlabs/northstar/pkg/mlog"
 )
 
 var errorMarathonNotConfigured = "MARATHON Client not configured"

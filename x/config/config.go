@@ -18,8 +18,8 @@ package config
 
 import (
 	"errors"
+	"github.com/lavaorg/lrt/x/mlog"
 	"os"
-	"github.com/verizonlabs/northstar/pkg/mlog"
 	"strconv"
 )
 

@@ -17,9 +17,8 @@ limitations under the License.
 package utils
 
 import (
+	"github.com/lavaorg/lrt/x/mlog"
 	"strconv"
-
-	"github.com/verizonlabs/northstar/pkg/mlog"
 )
 
 // HEADER

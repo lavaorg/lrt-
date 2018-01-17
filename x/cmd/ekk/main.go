@@ -17,11 +17,11 @@ limitations under the License.
 package main
 
 import (
-	"github.com/verizonlabs/northstar/pkg/ekk"
-	"github.com/verizonlabs/northstar/pkg/ekk/config"
-	"github.com/verizonlabs/northstar/pkg/mlog"
-	"github.com/verizonlabs/northstar/pkg/msgq"
-	"github.com/verizonlabs/northstar/pkg/service_master"
+	"github.com/lavaorg/lrt/x/ekk"
+	"github.com/lavaorg/lrt/x/ekk/config"
+	"github.com/lavaorg/lrt/x/mlog"
+	"github.com/lavaorg/lrt/x/msgq"
+	"github.com/lavaorg/lrt/x/service_master"
 )
 
 type (

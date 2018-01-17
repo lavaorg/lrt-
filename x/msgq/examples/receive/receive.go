@@ -19,8 +19,8 @@ package main
 import (
 	// "encoding/json"
 	"fmt"
-	"github.com/verizonlabs/northstar/pkg/mlog"
-	"github.com/verizonlabs/northstar/pkg/msgq"
+	"github.com/lavaorg/lrt/x/mlog"
+	"github.com/lavaorg/lrt/x/msgq"
 	"time"
 )
 

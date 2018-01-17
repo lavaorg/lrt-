@@ -17,8 +17,8 @@ limitations under the License.
 package repl
 
 import (
-	"github.com/verizonlabs/northstar/pkg/mlog"
-	"github.com/verizonlabs/northstar/pkg/rte/rlimit"
+	"github.com/lavaorg/lrt/x/mlog"
+	"github.com/lavaorg/lrt/x/rte/rlimit"
 	"strings"
 	"time"
 )

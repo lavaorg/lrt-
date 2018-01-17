@@ -24,7 +24,7 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/verizonlabs/northstar/pkg/mlog"
+	"github.com/lavaorg/lrt/x/mlog"
 )
 
 type (

@@ -17,12 +17,12 @@ limitations under the License.
 package events
 
 import (
+	"github.com/lavaorg/lrt/x/kafka"
+	"github.com/lavaorg/lrt/x/mlog"
+	"github.com/lavaorg/lrt/x/rte/repl"
+	"github.com/lavaorg/lrt/x/rte/util"
 	"github.com/orcaman/concurrent-map"
 	"os"
-	"github.com/verizonlabs/northstar/pkg/mlog"
-	"github.com/verizonlabs/northstar/pkg/kafka"
-	"github.com/verizonlabs/northstar/pkg/rte/repl"
-	"github.com/verizonlabs/northstar/pkg/rte/util"
 	"time"
 )
 

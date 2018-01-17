@@ -17,8 +17,8 @@ limitations under the License.
 package ekk
 
 import (
-	"github.com/verizonlabs/northstar/pkg/ekk/config"
-	"github.com/verizonlabs/northstar/pkg/msgq"
+	"github.com/lavaorg/lrt/x/ekk/config"
+	"github.com/lavaorg/lrt/x/msgq"
 )
 
 type (

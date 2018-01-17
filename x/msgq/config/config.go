@@ -19,7 +19,7 @@ package config
 import (
 	"time"
 
-	"github.com/verizonlabs/northstar/pkg/config"
+	"github.com/lavaorg/lrt/x/config"
 )
 
 var (

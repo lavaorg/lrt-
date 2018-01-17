@@ -21,8 +21,8 @@ import (
 	"time"
 
 	"github.com/gin-gonic/gin"
+	"github.com/lavaorg/lrt/x/mlog"
 	"github.com/pborman/uuid"
-	"github.com/verizonlabs/northstar/pkg/mlog"
 )
 
 type TxnInfo struct {

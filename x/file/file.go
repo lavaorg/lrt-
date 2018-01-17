@@ -17,9 +17,9 @@ limitations under the License.
 package file
 
 import (
+	"github.com/lavaorg/lrt/x/management"
+	"github.com/lavaorg/lrt/x/mlog"
 	"io/ioutil"
-	"github.com/verizonlabs/northstar/pkg/management"
-	"github.com/verizonlabs/northstar/pkg/mlog"
 )
 
 func ReadFile(file string) (string, error) {

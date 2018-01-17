@@ -21,8 +21,8 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/verizonlabs/northstar/pkg/ekk/config"
-	"github.com/verizonlabs/northstar/pkg/mlog"
+	"github.com/lavaorg/lrt/x/ekk/config"
+	"github.com/lavaorg/lrt/x/mlog"
 
 	"strings"
 

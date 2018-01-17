@@ -31,7 +31,7 @@ import (
 	"time"
 
 	"github.com/gin-gonic/gin"
-	log "github.com/verizonlabs/northstar/pkg/mlog"
+	log "github.com/lavaorg/lrt/x/mlog"
 )
 
 var (

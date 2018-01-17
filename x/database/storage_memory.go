@@ -17,7 +17,7 @@ limitations under the License.
 package database
 
 import (
-	"github.com/verizonlabs/northstar/pkg/management"
+	"github.com/lavaorg/lrt/x/management"
 	"net/http"
 	"reflect"
 	"strconv"

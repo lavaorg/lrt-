@@ -17,7 +17,7 @@ limitations under the License.
 package msgq
 
 import (
-	"github.com/verizonlabs/northstar/pkg/zklib"
+	"github.com/lavaorg/lrt/x/zklib"
 	"strconv"
 )
 

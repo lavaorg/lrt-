@@ -18,8 +18,8 @@ package mock
 
 import (
 	gomock "github.com/golang/mock/gomock"
-	. "github.com/lrt/x/accounts"
-	management "github.com/verizonlabs/northstar/pkg/management"
+	. "github.com/lavaorg/lrt/x/accounts"
+	management "github.com/lavaorg/lrt/x/management"
 )
 
 // Mock of Client interface

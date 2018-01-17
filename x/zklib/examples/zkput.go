@@ -19,8 +19,8 @@ package main
 import (
 	"flag"
 	"fmt"
+	"github.com/lavaorg/lrt/x/zklib"
 	"os"
-	"github.com/verizonlabs/northstar/pkg/zklib"
 	"strings"
 )
 

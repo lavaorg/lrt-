@@ -18,16 +18,16 @@ package config
 
 import (
 	"fmt"
-	"github.com/verizonlabs/northstar/pkg/config"
+	"github.com/lavaorg/lrt/x/config"
+	"github.com/lavaorg/lrt/x/mlog"
+	"github.com/lavaorg/lrt/x/utils"
+	"net"
 	"strings"
-    "net"
-    "github.com/verizonlabs/northstar/pkg/mlog"
-    "github.com/verizonlabs/northstar/pkg/utils"
 )
 
 var (
-    VaultHostPort           = resolveAddressString("VAULT_HOST_PORT")
-    GatekeeperHostPort      = resolveAddressString("GATEKEEPER_HOST_PORT")
+	VaultHostPort           = resolveAddressString("VAULT_HOST_PORT")
+	GatekeeperHostPort      = resolveAddressString("GATEKEEPER_HOST_PORT")
 	AppDC, _                = config.GetString("APP_DC", "")
 	AppMesosTaskId, _       = config.GetString("MESOS_TASK_ID", "")
 	VaultTlsEnabled, _      = config.GetBool("VAULT_TLS_ENABLED", false)
@@ -102,33 +102,34 @@ func GetSecretPath(app, appDc, env, svc string, devDeployment bool) string {
 		return fmt.Sprintf(SecretPath, appVaultBasePath, appDc, env, svc)
 	}
 }
+
 // Api to resolve string of hostnames - to ip addresses
 // hostnames are expected to have a ":port" part at the end
-func resolveAddressString(param string) (string) {
-        addressStr, _ := config.GetString(param, "")
-        var newAddressStr string
-        if (len(addressStr)<= 0) {
-                return ""
-        }
-        for _, host := range strings.Split(addressStr, ",") {
-                s := strings.Split(host, ":")
-                if (len(s)<=1){
-                        mlog.Error("Expected ip/Host:Port %s\n",s[0])
-                       return ""
-               }
-                ipOrHost, port := s[0], s[1]
-                addr := net.ParseIP(ipOrHost)
-                if addr == nil {
-                        mlog.Info("Resolving hostname: %s to IP address\n", host)
-                        ip_part := utils.HostsToIps(ipOrHost)
-                        host = ip_part+":"+port
-                        mlog.Info("New hostname and port are : %s\n", host)
-                }
-                if (len(newAddressStr)<= 0) {
-                        newAddressStr=host
-                } else {
-                        newAddressStr+=","+host
-                }
-        }
-        return newAddressStr
+func resolveAddressString(param string) string {
+	addressStr, _ := config.GetString(param, "")
+	var newAddressStr string
+	if len(addressStr) <= 0 {
+		return ""
+	}
+	for _, host := range strings.Split(addressStr, ",") {
+		s := strings.Split(host, ":")
+		if len(s) <= 1 {
+			mlog.Error("Expected ip/Host:Port %s\n", s[0])
+			return ""
+		}
+		ipOrHost, port := s[0], s[1]
+		addr := net.ParseIP(ipOrHost)
+		if addr == nil {
+			mlog.Info("Resolving hostname: %s to IP address\n", host)
+			ip_part := utils.HostsToIps(ipOrHost)
+			host = ip_part + ":" + port
+			mlog.Info("New hostname and port are : %s\n", host)
+		}
+		if len(newAddressStr) <= 0 {
+			newAddressStr = host
+		} else {
+			newAddressStr += "," + host
+		}
+	}
+	return newAddressStr
 }

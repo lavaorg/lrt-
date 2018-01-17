@@ -17,8 +17,8 @@ limitations under the License.
 package lualib
 
 import (
+	"github.com/lavaorg/lrt/x/mlog"
 	"github.com/yuin/gopher-lua"
-	"github.com/verizonlabs/northstar/pkg/mlog"
 )
 
 type mlogModule struct {

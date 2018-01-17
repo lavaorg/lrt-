@@ -31,8 +31,8 @@ import (
 	"github.com/channelmeter/vault-gatekeeper-mesos/gatekeeper"
 	"github.com/franela/goreq"
 	vaultapi "github.com/hashicorp/vault/api"
-	"github.com/verizonlabs/northstar/pkg/mlog"
-	"github.com/verizonlabs/northstar/pkg/vaultlib/config"
+	"github.com/lavaorg/lrt/x/mlog"
+	"github.com/lavaorg/lrt/x/vaultlib/config"
 )
 
 const (

@@ -18,10 +18,10 @@ package rte
 
 import (
 	"fmt"
-	"github.com/verizonlabs/northstar/pkg/management"
-	"github.com/verizonlabs/northstar/pkg/mlog"
-	"github.com/verizonlabs/northstar/pkg/rte/config"
-	"github.com/verizonlabs/northstar/pkg/rte/events"
+	"github.com/lavaorg/lrt/x/management"
+	"github.com/lavaorg/lrt/x/mlog"
+	"github.com/lavaorg/lrt/x/rte/config"
+	"github.com/lavaorg/lrt/x/rte/events"
 )
 
 func InitRTE(rteType string) error {

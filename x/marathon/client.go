@@ -18,9 +18,9 @@ package marathon
 
 import (
 	"github.com/gambol99/go-marathon"
-	"github.com/verizonlabs/northstar/pkg/config"
-	"github.com/verizonlabs/northstar/pkg/management"
-	"github.com/verizonlabs/northstar/pkg/mlog"
+	"github.com/lavaorg/lrt/x/config"
+	"github.com/lavaorg/lrt/x/management"
+	"github.com/lavaorg/lrt/x/mlog"
 )
 
 type MarathonClient struct {

@@ -26,7 +26,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/verizonlabs/northstar/pkg/mlog"
+	"github.com/lavaorg/lrt/x/mlog"
 )
 
 const (

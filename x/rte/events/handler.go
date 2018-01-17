@@ -19,16 +19,16 @@ package events
 import (
 	"encoding/json"
 	"fmt"
+	"github.com/lavaorg/lrt/x/kafka"
+	"github.com/lavaorg/lrt/x/mlog"
+	"github.com/lavaorg/lrt/x/rte/config"
+	"github.com/lavaorg/lrt/x/rte/repl"
+	"github.com/lavaorg/lrt/x/rte/rlimit"
+	"github.com/lavaorg/lrt/x/rte/stats"
+	"github.com/lavaorg/lrt/x/rte/topics"
+	"github.com/lavaorg/lrt/x/service_master"
+	"github.com/lavaorg/northstar/rte-lua/interpreter"
 	"github.com/orcaman/concurrent-map"
-	"github.com/verizonlabs/northstar/pkg/mlog"
-	"github.com/verizonlabs/northstar/pkg/service_master"
-	"github.com/verizonlabs/northstar/pkg/kafka"
-	"github.com/verizonlabs/northstar/pkg/rte/config"
-	"github.com/verizonlabs/northstar/pkg/rte/repl"
-	"github.com/verizonlabs/northstar/pkg/rte/rlimit"
-	"github.com/verizonlabs/northstar/pkg/rte/stats"
-	"github.com/verizonlabs/northstar/pkg/rte/topics"
-	"github.com/verizonlabs/northstar/rte-lua/interpreter"
 )
 
 type EventHandler struct {

@@ -23,8 +23,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/verizonlabs/northstar/pkg/mlog"
-	"github.com/verizonlabs/northstar/pkg/servdisc"
+	"github.com/lavaorg/lrt/x/mlog"
+	"github.com/lavaorg/lrt/x/servdisc"
 )
 
 const DEV_IMSI_LEN int = 14

@@ -17,9 +17,9 @@ limitations under the License.
 package mocks
 
 import (
-	"github.com/verizonlabs/northstar/pkg/mlog"
-	"github.com/verizonlabs/northstar/pkg/rte/events"
-	"github.com/verizonlabs/northstar/pkg/rte/repl"
+	"github.com/lavaorg/lrt/x/mlog"
+	"github.com/lavaorg/lrt/x/rte/events"
+	"github.com/lavaorg/lrt/x/rte/repl"
 )
 
 type MockSnippetManager struct{}

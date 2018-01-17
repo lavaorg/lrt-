@@ -18,11 +18,11 @@ package config
 
 import (
 	"errors"
+	"github.com/lavaorg/lrt/x/config"
+	"github.com/lavaorg/lrt/x/mlog"
+	"github.com/lavaorg/lrt/x/redis"
+	"github.com/lavaorg/lrt/x/servdisc"
 	"os"
-	"github.com/verizonlabs/northstar/pkg/config"
-	"github.com/verizonlabs/northstar/pkg/mlog"
-	"github.com/verizonlabs/northstar/pkg/redis"
-	"github.com/verizonlabs/northstar/pkg/servdisc"
 	"strings"
 )
 

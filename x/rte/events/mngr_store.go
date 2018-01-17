@@ -17,8 +17,8 @@ limitations under the License.
 package events
 
 import (
+	"github.com/lavaorg/lrt/x/rte/topics"
 	"github.com/orcaman/concurrent-map"
-	"github.com/verizonlabs/northstar/pkg/rte/topics"
 )
 
 type ManagerStore interface {

@@ -22,13 +22,13 @@ import (
 	"fmt"
 	"time"
 	//"encoding/binary"
-	"github.com/verizonlabs/northstar/pkg/mlog"
-	"github.com/verizonlabs/northstar/pkg/msgq"
-	"github.com/verizonlabs/northstar/pkg/msgs"
-	//"github.com/verizonlabs/northstar/pkg/external/utils"
-	"github.com/verizonlabs/northstar/pkg/sdscodec"
-	//"github.com/verizonlabs/northstar/pkg/servdisc"
-	"github.com/verizonlabs/northstar/pkg/msgq/topics"
+	"github.com/lavaorg/lrt/x/mlog"
+	"github.com/lavaorg/lrt/x/msgq"
+	"github.com/lavaorg/lrt/x/msgs"
+	//"github.com/lavaorg/lrt/x/external/utils"
+	"github.com/lavaorg/lrt/x/sdscodec"
+	//"github.com/lavaorg/lrt/x/servdisc"
+	"github.com/lavaorg/lrt/x/msgq/topics"
 )
 
 func main() {

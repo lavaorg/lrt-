@@ -18,11 +18,11 @@ package events
 
 import (
 	"fmt"
-	"github.com/verizonlabs/northstar/pkg/mlog"
-	"github.com/verizonlabs/northstar/northstarapi/internalClient"
-	"github.com/verizonlabs/northstar/northstarapi/model"
-	"github.com/verizonlabs/northstar/pkg/rte/config"
-	"github.com/verizonlabs/northstar/pkg/rte/stats"
+	"github.com/lavaorg/lrt/x/mlog"
+	"github.com/lavaorg/lrt/x/rte/config"
+	"github.com/lavaorg/lrt/x/rte/stats"
+	"github.com/lavaorg/northstar/northstarapi/internalClient"
+	"github.com/lavaorg/northstar/northstarapi/model"
 )
 
 type HttpEventsProducer struct {
