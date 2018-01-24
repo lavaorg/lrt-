@@ -24,7 +24,6 @@ import (
 	"time"
 
 	"github.com/lavaorg/lrt/x/mlog"
-	"github.com/lavaorg/lrt/x/servdisc"
 )
 
 const DEV_IMSI_LEN int = 14
@@ -54,11 +53,11 @@ GetCorrelationId returns correlataion id by merging
 6 bits ServiceType
 2 bits counter
 
-ServiceInstanceId - 0 to 255
-ServiceType - 0 to 63
+svc instance id - 0 to 255
+svc type - 0 to 63
 Counter - 0 to 3
 */
-func GetCorrelationId(sid uint16, st servdisc.ServiceType, ctr uint8) (uint16, error) {
+func GetCorrelationId(sid uint16, st uint16, ctr uint8) (uint16, error) {
 	if sid > 255 {
 		return 0, errors.New("Invalid service instance id, valid values are 0 to 255")
 	}
@@ -70,7 +69,7 @@ func GetCorrelationId(sid uint16, st servdisc.ServiceType, ctr uint8) (uint16, e
 
 // GetToken returns token merging 8-bit datacenter id, 8-bit service type and
 // 16-bit correlation id.
-func GetToken(did byte, st servdisc.ServiceType, cid uint16) uint32 {
+func GetToken(did byte, st uint16, cid uint16) uint32 {
 	return uint32(did)<<24 | uint32(st)<<16 | uint32(cid)
 }
 
@@ -96,8 +95,8 @@ func GetServiceInstanceId(cId uint16) uint16 {
 /*
 GetServiceType returns service type (6bits) from the correlation id
 */
-func GetServiceType(cId uint16) servdisc.ServiceType {
-	return servdisc.ServiceType(extract(cId, 2, 8))
+func GetServiceType(cId uint16) uint16 {
+	return uint16(extract(cId, 2, 8))
 }
 
 /*

@@ -31,7 +31,6 @@ import (
 	"github.com/Shopify/sarama"
 	"github.com/lavaorg/lrt/x/mlog"
 	"github.com/lavaorg/lrt/x/msgq/config"
-	"github.com/lavaorg/lrt/x/servdisc"
 	"github.com/lavaorg/lrt/x/stats"
 	"github.com/lavaorg/lrt/x/zklib"
 	"github.com/samuel/go-zookeeper/zk"
@@ -292,30 +291,6 @@ func newMsgQ(svcName string, kafkaBrokers []string, zkBrokers []string, disableS
 
 	//Init stats Obj
 	initStats(svcName, disableStats)
-
-	if len(kafkaBrokers) == 0 {
-		kafkaBrokers, err = servdisc.GetHostPortStrings(servdisc.KAFKA_SERVICE)
-		if err != nil {
-			mlog.Error("Could not get kafka broker list from service discovery. err %v", err)
-			return nil, err
-		} else {
-			mlog.Info("Received kafka broker list %v from service discovery", kafkaBrokers)
-		}
-	} else {
-		mlog.Info("Using the kafka broker list %v from parameters. Not using service discovery", kafkaBrokers)
-	}
-
-	if len(zkBrokers) == 0 {
-		zkBrokers, err = servdisc.GetHostPortStrings(servdisc.ZOOKEEPER_SERVICE)
-		if err != nil {
-			mlog.Error("Could not get zookeeper nodes list from service discovery. err %v", err)
-			return nil, err
-		} else {
-			mlog.Info("Received zookeeper nodes list %v from service discovery", zkBrokers)
-		}
-	} else {
-		mlog.Info("Using the Zookeeper node list %v from parameters. Not using service discovery", zkBrokers)
-	}
 
 	// Config used with sarama
 	saramaConfig := getSaramaConfig(msgQ, cacertfiles, bSkipVerify)
