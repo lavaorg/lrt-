@@ -52,7 +52,7 @@ type Resource struct {
 }
 
 // Middleware for intersecting the request
-func Authorization(accessData *AllowedServices, authClient thingspace.AuthClient) gin.HandlerFunc {
+func Authorization(accessData *AllowedServices, authClient accounts.AuthClient) gin.HandlerFunc {
 
 	return func(context *gin.Context) {
 		mlog.Debug("Authorization")
@@ -115,7 +115,7 @@ func getBearerToken(request *http.Request) (string, error) {
 }
 
 // Helper method used to validate the token info.
-func validateToken(writer http.ResponseWriter, request *http.Request, tokenInfo *TokenInfo, accessData *AllowedServices) *management.Error {
+func validateToken(writer http.ResponseWriter, request *http.Request, tokenInfo *accounts.TokenInfo, accessData *AllowedServices) *management.Error {
 
 	// Validate token is not expired.
 	if tokenInfo.IsExpired() {

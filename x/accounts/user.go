@@ -39,6 +39,25 @@ type AccountsClient struct {
 	clientSecret string
 }
 
+// Define type used as a filter
+type Query struct {
+	Filter      map[string]interface{} `json:"$filter,omitempty"`
+	LimitNumber int                    `json:"$limitnumber, omitempty"`
+}
+
+const (
+	FilterForeignId     string = "foreignid"
+	FilterId            string = "id"
+	FilterCredentialsID string = "credentialsid"
+)
+
+const (
+	// Defines the constant used to identify the REST endpoint path
+	BASE_PATH             = "/south/v2/"
+	NOTIF_BASE_PATH       = "/notif/v1/messages"
+	NOTIF_SOUTH_BASE_PATH = "/south/v2/notifications/actions/send"
+)
+
 // Returns a new  client.
 func NewAccountsClient(accountsHostAndPort string, clientId string, clientSecret string) (Client, error) {
 	mlog.Info("NewAccountsClient")

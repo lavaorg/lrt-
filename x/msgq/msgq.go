@@ -29,12 +29,12 @@ import (
 	"time"
 
 	"github.com/Shopify/sarama"
-	"github.com/samuel/go-zookeeper/zk"
 	"github.com/lavaorg/lrt/x/mlog"
 	"github.com/lavaorg/lrt/x/msgq/config"
 	"github.com/lavaorg/lrt/x/servdisc"
 	"github.com/lavaorg/lrt/x/stats"
 	"github.com/lavaorg/lrt/x/zklib"
+	"github.com/samuel/go-zookeeper/zk"
 )
 
 type PartitionerType int
@@ -705,7 +705,7 @@ func (msgQ *MsgQ) NewConsumer(consConf *ConsumerConfig) (MsgQConsumer, error) {
 	}
 	if true == outOfRangeOccured {
 		//Get the chosen offset and store
-		choosenOffset := cons.SaramaConsumer.Offset()
+		choosenOffset := cons.SaramaConsumer.HighWaterMarkOffset()
 		atomic.StoreInt64(&cons.CommitOffset, choosenOffset)
 	}
 

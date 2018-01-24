@@ -21,9 +21,9 @@ import (
 	"encoding/base64"
 	"encoding/json"
 	"fmt"
+	"github.com/lavaorg/lrt/x/management"
+	"github.com/lavaorg/lrt/x/mlog"
 	"github.com/pmylund/go-cache"
-	"github.com/verizonlabs/northstar/pkg/management"
-	"github.com/verizonlabs/northstar/pkg/mlog"
 	"io/ioutil"
 	"net/http"
 	"net/url"
@@ -36,8 +36,15 @@ const (
 	CachePurgeTime  = 30 * time.Minute
 )
 
+const (
+	// Defines the access token grant types.
+	AuthorizationCodeGrantType string = "authorization_code"
+	PasswordGrantType          string = "password"
+	ClientCredentialsGrantType string = "client_credentials"
+)
+
 // Defines the auth client interface.
-type NAuthClient interface {
+type AuthClient interface {
 	GetClientToken(clientId string, clientSecret string, scope string) (*Token, *management.Error)
 	GetUserToken(clientId, clientSecret, username, password, scope string) (*Token, *management.Error)
 	RevokeAccessToken(clientId, clientSecret, token string) *management.Error
@@ -48,6 +55,37 @@ type NAuthClient interface {
 type NSAuthClient struct {
 	BaseClient
 	tokenCache *cache.Cache
+}
+
+// Defines the auth token type.
+type Token struct {
+	AccessToken  string    `json:"access_token"`
+	RefreshToken string    `json:"refresh_token"`
+	Type         string    `json:"token_type"`
+	ExpiresIn    float64   `json:"expires_in"`
+	Scope        string    `json:"scope"`
+	CreatedAt    time.Time `json:"-"`
+}
+
+// Defines the type used to represent token information.
+type TokenInfo struct {
+	GrantType  string    `json:"grant_type,omitempty"`
+	CreatedAt  time.Time `json:"created_at,omitempty"`
+	ExpiresIn  int32     `json:"expires_in,omitempty"`
+	UserName   string    `json:"username"`
+	CustomData string    `json:"custom_data,omitempty"`
+	Scopes     []string  `json:"scope,omitempty"`
+	ClientId   string    `json:"clientid"`
+}
+
+// Returns true if token is expired, false otherwise.
+func (token Token) IsExpired() bool {
+	return token.CreatedAt.Add(time.Duration(token.ExpiresIn) * time.Second).Before(time.Now())
+}
+
+// Returns true if token info is expired, false otherwise.
+func (tokenInfo TokenInfo) IsExpired() bool {
+	return tokenInfo.CreatedAt.Add(time.Duration(tokenInfo.ExpiresIn) * time.Second).Before(time.Now())
 }
 
 // Returns a new  Auth Service client.

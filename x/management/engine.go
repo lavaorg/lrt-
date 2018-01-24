@@ -46,7 +46,7 @@ func Engine() *gin.Engine {
 			//gin API takes care of value checking
 			// mgmt pkg wants default as release mode
 			// so set it.
-			value := os.Getenv(gin.GIN_MODE)
+			value := os.Getenv(gin.ENV_GIN_MODE)
 			if len(value) == 0 {
 				gin.SetMode(gin.ReleaseMode)
 			} else {

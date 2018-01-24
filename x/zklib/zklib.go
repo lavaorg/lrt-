@@ -594,7 +594,7 @@ func (z *ZK) startPeriodicDataWatcher(zkpath string, retChan chan zk.Event, clos
 				// Check if there is a change in data for node, if yes raise an event for application
 				if reflect.DeepEqual(currData, prevData) == false {
 					mlog.Debug("DataWatcher got an event for [%s] [%+v]", zkpath, evt)
-					retChan <- zk.Event{Type: zk.EventNodeDataChanged, State: zk.StateSyncConnected, Path: zkpath}
+					retChan <- zk.Event{Type: zk.EventNodeDataChanged, State: zk.StateConnected, Path: zkpath}
 				}
 			}
 		}
@@ -673,7 +673,7 @@ func (z *ZK) startPeriodicChildWatcher(zkpath string, retChan chan zk.Event) ([]
 				if reflect.DeepEqual(currChildren, prevChildren) == false {
 					mlog.Debug("ChildrenWatcher got event for [%s] [%+v] [%+v] [%+v]", zkpath, evt, prevChildren, currChildren)
 					z.updateWatchers(zkpath, prevChildren, currChildren, retChan)
-					retChan <- zk.Event{Type: zk.EventNodeChildrenChanged, State: zk.StateSyncConnected, Path: zkpath}
+					retChan <- zk.Event{Type: zk.EventNodeChildrenChanged, State: zk.StateConnected, Path: zkpath}
 				}
 
 			}

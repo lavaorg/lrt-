@@ -38,8 +38,8 @@ func NewMarathonClient() (*MarathonClient, error) {
 	cfg.URL, _ = config.GetString("MARATHON_BASE_URL", "http://10.1.42.1:19090")
 	cfg.HTTPBasicAuthUser, _ = config.GetString("MARATHON_USERNAME", "dcos")
 	cfg.HTTPBasicPassword, _ = config.GetString("MARATHON_PASSWORD", "vzdcos")
-	cfg.AuthType, _ = config.GetString("MARATHON_AUTH_TYPE", "BASIC_AUTH")
-	cfg.AuthUrl, _ = config.GetString("MARATHON_AUTH_URL", "http://10.1.13.1:9090/acs/api/v1/auth/login")
+	//cfg.AuthType, _ = config.GetString("MARATHON_AUTH_TYPE", "BASIC_AUTH")
+	//cfg.AuthUrl, _ = config.GetString("MARATHON_AUTH_URL", "http://10.1.13.1:9090/acs/api/v1/auth/login")
 	cfg.HTTPClient = management.NewHttpClient()
 
 	client, err := marathon.NewClient(cfg)

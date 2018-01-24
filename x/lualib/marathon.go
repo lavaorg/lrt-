@@ -146,7 +146,7 @@ func (m *marathonModule) ScaleCustomApp(L *lua.LState) int {
 	}
 	appId := scaleApp.DeploymentID
 	numInstances := scaleApp.NumInstances
-	_, err = m.client.ScaleUpApplicationInstances(appId, numInstances, true)
+	_, err = m.client.ScaleApplicationInstances(appId, numInstances, true)
 
 	if err != nil {
 		mlog.Error("Failed to scale up the application: %s, error: %s", appId, err)

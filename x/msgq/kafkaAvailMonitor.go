@@ -18,9 +18,9 @@ package msgq
 
 import (
 	"github.com/Shopify/sarama"
-	vzbreaker "github.com/Shopify/sarama/vz/breaker"
 	"github.com/eapache/go-resiliency/breaker"
 	"github.com/lavaorg/lrt/x/mlog"
+	vzbreaker "github.com/lavaorg/lrt/x/utils"
 	"sync"
 	"time"
 )
