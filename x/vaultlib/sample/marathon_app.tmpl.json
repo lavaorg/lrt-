@@ -1,6 +1,0 @@
-{
-  "mem": 128.0,
-  "env": {
-    "DEV_DEPLOYMENT":"true"
-  }
-}
