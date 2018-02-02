@@ -1,0 +1,1 @@
+fold "_tests" into a go test placing the lua inside the go test

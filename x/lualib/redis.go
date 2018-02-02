@@ -19,7 +19,7 @@ package lualib
 import (
 	"fmt"
 	"github.com/lavaorg/lrt/x/redis"
-	"github.com/yuin/gopher-lua"
+	"github.com/lavaorg/lua"
 )
 
 var errorRedisNotConfigured = "REDIS Client not configured"

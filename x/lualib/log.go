@@ -18,7 +18,7 @@ package lualib
 
 import (
 	"github.com/lavaorg/lrt/x/mlog"
-	"github.com/yuin/gopher-lua"
+	"github.com/lavaorg/lua"
 )
 
 type mlogModule struct {

@@ -22,7 +22,7 @@ import (
 
 	marathon "github.com/gambol99/go-marathon"
 	"github.com/lavaorg/lrt/x/mlog"
-	"github.com/yuin/gopher-lua"
+	"github.com/lavaorg/lua"
 )
 
 var errorMarathonNotConfigured = "MARATHON Client not configured"
