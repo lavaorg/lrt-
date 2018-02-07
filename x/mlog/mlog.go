@@ -41,14 +41,9 @@ var (
 )
 
 const (
-	Version         = "1"
-	Marker          = "*"
-	MarkerTP        = "+"
-	Separator       = "|"
-	MarkerChar      = '*'
-	MarkerTPChar    = '+'
-	SeparatorChar   = '|'
-	NumHeaderFields = 11
+	Version   = "1"
+	Marker    = "*"
+	Separator = "|"
 )
 
 // log initialized at init time
@@ -62,20 +57,20 @@ func initialize() {
 	namex := pathx[len(pathx)-1]
 
 	// pull environment variables
-	application = os.Getenv("MON_APP")
+	application = os.Getenv("LRT_APP")
 	if application == "" {
 		application = namex
 	}
-	group = os.Getenv("MON_GROUP")
+	group = os.Getenv("LRT_GROUP")
 	if group == "" {
-		group = "unknown"
+		group = "/" //root group
 	}
-	corelationid = os.Getenv("MON_CORELATIONID")
+	corelationid = os.Getenv("LRT_CORELATIONID")
 	if corelationid == "" {
 		corelationid = "0"
 	}
 
-	mesostaskid = os.Getenv("MESOS_TASK_ID")
+	mesostaskid = os.Getenv("LRT_TASK_ID") //any orchestator task id
 	if mesostaskid == "" {
 		mesostaskid = "0"
 	}
@@ -84,8 +79,8 @@ func initialize() {
 	name = namex
 	pid = strconv.Itoa(os.Getpid())
 	severity = INFO
-	debug := os.Getenv("ENABLE_DEBUG")
-	if debug == "True" || debug == "true" {
+	debug := strings.ToLower(os.Getenv("LRT_ENABLE_DEBUG"))
+	if debug == "true" {
 		EnableDebug(true)
 	}
 
@@ -291,17 +286,17 @@ func emit(severity uint8, file string, line int, template string, args ...interf
 	// then split into individual lines (by CR)
 	var lines []string
 	if len(args) > 0 {
-		formatted := fmt.Sprintf(template, args...)
-		lines = strings.Split(formatted, "\n")
-	} else {
-		lines = strings.Split(template, "\n")
+		template = fmt.Sprintf(template, args...)
 	}
+	lines = strings.Split(template, "\n")
 
 	// format each message from caller statistics
 	// and output to the correct stream
 	stream := severityToStream[severity]
 
 	// create message according to the logging system format specs
+
+	timestamp := time.Now().UTC().Format("2006/01/02 15:04:05.999999999")
 	message := strings.Join([]string{
 		Marker,
 		Version,
@@ -312,22 +307,15 @@ func emit(severity uint8, file string, line int, template string, args ...interf
 		application,
 		name,
 		corelationid,
-		fileAndLine}, Separator)
+		fileAndLine,
+		timestamp,
+	}, Separator)
+
 	for _, line := range lines {
 		if line == "" {
 			continue
 		}
-
-		// get timestamp
-		timestamp := time.Now().UTC().Format("2006/01/02 15:04:05.999999999")
-
 		// Write message to stdout or stderr
-
-		// Noticed spurious data in the error stream which was leading to parsing issues
-		// down the flow in logger. Additional newline protects the actual log messages
-		// and allows them all the way to the storage in InfluxDB
-		// The newline later gets ignored by logger and this has no other side-effect
-		fmt.Fprintln(stream, "")
-		fmt.Fprintln(stream, message+Separator+timestamp+Separator+line)
+		fmt.Fprintln(stream, message+Separator+line)
 	}
 }

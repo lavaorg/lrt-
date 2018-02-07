@@ -34,19 +34,19 @@ func TestLog(t *testing.T) {
 		pid := strconv.Itoa(os.Getpid())
 		testOne := "test one"
 		testTwo := "test two"
-		alarmStarts := "*|1|ALARM|0|" + pid + "|dakota|test|mlog.test|0|mlog_test.go"
-		errorStarts := "*|1|ERROR|0|" + pid + "|dakota|test|mlog.test|0|mlog_test.go"
-		debugStarts := "*|1|DEBUG|0|" + pid + "|dakota|test|mlog.test|0|mlog_test.go"
-		statStarts := "*|1|STAT|0|" + pid + "|dakota|test|mlog.test|0|mlog_test.go"
-		infoStarts := "*|1|INFO|0|" + pid + "|dakota|test|mlog.test|0|mlog_test.go"
-		eventStarts := "*|1|EVENT|0|" + pid + "|dakota|test|mlog.test|0|mlog_test.go"
+		alarmStarts := "*|1|ALARM|0|" + pid + "|tgrp|tapp|mlog.test|0|mlog_test.go"
+		errorStarts := "*|1|ERROR|0|" + pid + "|tgrp|tapp|mlog.test|0|mlog_test.go"
+		debugStarts := "*|1|DEBUG|0|" + pid + "|tgrp|tapp|mlog.test|0|mlog_test.go"
+		statStarts := "*|1|STAT|0|" + pid + "|tgrp|tapp|mlog.test|0|mlog_test.go"
+		infoStarts := "*|1|INFO|0|" + pid + "|tgrp|tapp|mlog.test|0|mlog_test.go"
+		eventStarts := "*|1|EVENT|0|" + pid + "|tgrp|tapp|mlog.test|0|mlog_test.go"
 
 		oneEnds := "|" + testOne + "\n"
 		twoEnds := "|" + testTwo + "\n"
 
-		golangInfoStarts := "*|1|INFO|0|" + pid + "|dakota|test|mlog.test|0|"
-		golangStatStarts := "*|1|STAT|0|" + pid + "|dakota|test|mlog.test|0|print.go"
-		golangPanicInfoStarts := "*|1|ALARM|0|" + pid + "|dakota|test|mlog.test|0|"
+		golangInfoStarts := "*|1|INFO|0|" + pid + "|tgrp|tapp|mlog.test|0|"
+		golangStatStarts := "*|1|STAT|0|" + pid + "|tgrp|tapp|mlog.test|0|print.go"
+		golangPanicInfoStarts := "*|1|ALARM|0|" + pid + "|tgrp|tapp|mlog.test|0|"
 		golangOneEnds := " " + testOne + "\n"
 		golangTwoEnds := " " + testTwo + "\n"
 
@@ -71,8 +71,8 @@ func TestLog(t *testing.T) {
 		})
 
 		// prep env values
-		os.Setenv("MON_APP", "test")
-		os.Setenv("MON_GROUP", "dakota")
+		os.Setenv("LRT_APP", "tapp")
+		os.Setenv("LRT_GROUP", "tgrp")
 		initialize()
 
 		// create mock io.Writers (beside Stdout and Stderr)
@@ -105,9 +105,6 @@ func TestLog(t *testing.T) {
 				// ALARM
 				Alarm(testOne)
 				logMessage = buffer1k.String()
-				if len(logMessage) > 0 {
-					logMessage = logMessage[1:]
-				}
 				if severity >= ALARM {
 					convey.So(logMessage, convey.ShouldStartWith, alarmStarts)
 					convey.So(logMessage, convey.ShouldEndWith, oneEnds)
@@ -119,9 +116,6 @@ func TestLog(t *testing.T) {
 				// ALARM
 				Alarm(testTwo)
 				logMessage = buffer1k.String()
-				if len(logMessage) > 0 {
-					logMessage = logMessage[1:]
-				}
 				if severity >= ALARM {
 					convey.So(logMessage, convey.ShouldStartWith, alarmStarts)
 					convey.So(logMessage, convey.ShouldEndWith, twoEnds)
@@ -133,9 +127,6 @@ func TestLog(t *testing.T) {
 				// ERROR
 				Error(testOne)
 				logMessage = buffer1k.String()
-				if len(logMessage) > 0 {
-					logMessage = logMessage[1:]
-				}
 				if severity >= ERROR {
 					convey.So(logMessage, convey.ShouldStartWith, errorStarts)
 					convey.So(logMessage, convey.ShouldEndWith, oneEnds)
@@ -147,9 +138,6 @@ func TestLog(t *testing.T) {
 				// ERROR
 				Error(testTwo)
 				logMessage = buffer1k.String()
-				if len(logMessage) > 0 {
-					logMessage = logMessage[1:]
-				}
 				if severity >= ERROR {
 					convey.So(logMessage, convey.ShouldStartWith, errorStarts)
 					convey.So(logMessage, convey.ShouldEndWith, twoEnds)
@@ -161,9 +149,6 @@ func TestLog(t *testing.T) {
 				// STAT
 				Stat(testOne)
 				logMessage = buffer1k.String()
-				if len(logMessage) > 0 {
-					logMessage = logMessage[1:]
-				}
 				if severity >= STAT {
 					convey.So(logMessage, convey.ShouldStartWith, statStarts)
 					convey.So(logMessage, convey.ShouldEndWith, oneEnds)
@@ -175,9 +160,6 @@ func TestLog(t *testing.T) {
 				// STAT
 				Stat(testTwo)
 				logMessage = buffer1k.String()
-				if len(logMessage) > 0 {
-					logMessage = logMessage[1:]
-				}
 				if severity >= STAT {
 					time.Sleep(time.Millisecond)
 					convey.So(logMessage, convey.ShouldStartWith, statStarts)
@@ -190,9 +172,6 @@ func TestLog(t *testing.T) {
 				// EVENT
 				Event(testOne)
 				logMessage = buffer1k.String()
-				if len(logMessage) > 0 {
-					logMessage = logMessage[1:]
-				}
 				if severity >= EVENT {
 					convey.So(logMessage, convey.ShouldStartWith, eventStarts)
 					convey.So(logMessage, convey.ShouldEndWith, oneEnds)
@@ -204,9 +183,6 @@ func TestLog(t *testing.T) {
 				// EVENT
 				Event(testTwo)
 				logMessage = buffer1k.String()
-				if len(logMessage) > 0 {
-					logMessage = logMessage[1:]
-				}
 				if severity >= EVENT {
 					convey.So(logMessage, convey.ShouldStartWith, eventStarts)
 					convey.So(logMessage, convey.ShouldEndWith, twoEnds)
@@ -218,9 +194,6 @@ func TestLog(t *testing.T) {
 				// INFO
 				Info(testOne)
 				logMessage = buffer1k.String()
-				if len(logMessage) > 0 {
-					logMessage = logMessage[1:]
-				}
 				if severity >= INFO {
 					convey.So(logMessage, convey.ShouldStartWith, infoStarts)
 					convey.So(logMessage, convey.ShouldEndWith, oneEnds)
@@ -232,9 +205,6 @@ func TestLog(t *testing.T) {
 				// INFO
 				Info(testTwo)
 				logMessage = buffer1k.String()
-				if len(logMessage) > 0 {
-					logMessage = logMessage[1:]
-				}
 				if severity >= INFO {
 					convey.So(logMessage, convey.ShouldStartWith, infoStarts)
 					convey.So(logMessage, convey.ShouldEndWith, twoEnds)
@@ -246,9 +216,6 @@ func TestLog(t *testing.T) {
 				// DEBUG
 				Debug(testOne)
 				logMessage = buffer1k.String()
-				if len(logMessage) > 0 {
-					logMessage = logMessage[1:]
-				}
 				if severity >= DEBUG {
 					convey.So(logMessage, convey.ShouldStartWith, debugStarts)
 					convey.So(logMessage, convey.ShouldEndWith, oneEnds)
@@ -260,9 +227,6 @@ func TestLog(t *testing.T) {
 				// DEBUG
 				Debug(testTwo)
 				logMessage = buffer1k.String()
-				if len(logMessage) > 0 {
-					logMessage = logMessage[1:]
-				}
 				if severity >= DEBUG {
 					convey.So(logMessage, convey.ShouldStartWith, debugStarts)
 					convey.So(logMessage, convey.ShouldEndWith, twoEnds)
@@ -274,9 +238,6 @@ func TestLog(t *testing.T) {
 				// STAT
 				fmt.Fprintf(GetStatWriter(), testOne)
 				logMessage = buffer1k.String()
-				if len(logMessage) > 0 {
-					logMessage = logMessage[1:]
-				}
 				if severity >= STAT {
 					convey.So(logMessage, convey.ShouldStartWith, golangStatStarts)
 					convey.So(logMessage, convey.ShouldEndWith, oneEnds)
@@ -288,9 +249,6 @@ func TestLog(t *testing.T) {
 				// STAT
 				fmt.Fprintf(GetStatWriter(), testTwo)
 				logMessage = buffer1k.String()
-				if len(logMessage) > 0 {
-					logMessage = logMessage[1:]
-				}
 				if severity >= STAT {
 					convey.So(logMessage, convey.ShouldStartWith, golangStatStarts)
 					convey.So(logMessage, convey.ShouldEndWith, twoEnds)
@@ -302,9 +260,6 @@ func TestLog(t *testing.T) {
 				// UNKNOWN - go log
 				golog.Printf(testOne)
 				logMessage = buffer1k.String()
-				if len(logMessage) > 0 {
-					logMessage = logMessage[1:]
-				}
 				if severity >= INFO {
 					convey.So(logMessage, convey.ShouldStartWith, golangInfoStarts)
 					convey.So(logMessage, convey.ShouldEndWith, golangOneEnds)
@@ -316,9 +271,6 @@ func TestLog(t *testing.T) {
 				// UNKNOWN - go log
 				golog.Printf(testTwo)
 				logMessage = buffer1k.String()
-				if len(logMessage) > 0 {
-					logMessage = logMessage[1:]
-				}
 				if severity >= INFO {
 					convey.So(logMessage, convey.ShouldStartWith, golangInfoStarts)
 					convey.So(logMessage, convey.ShouldEndWith, golangTwoEnds)
@@ -339,9 +291,6 @@ func TestLog(t *testing.T) {
 
 				<-done
 				logMessage = buffer1k.String()
-				if len(logMessage) > 0 {
-					logMessage = logMessage[1:]
-				}
 				if severity >= ALARM {
 					convey.So(logMessage, convey.ShouldStartWith, golangPanicInfoStarts)
 					convey.So(logMessage, convey.ShouldEndWith, golangOneEnds)
